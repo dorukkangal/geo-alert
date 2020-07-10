@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph_geo_alert_list"
+    app:startDestination="@id/geo_alert_list">
+
+    <fragment
+        android:id="@+id/geo_alert_list"
+        android:name="com.dorukkangal.geoalert.ui.list.GeoAlertListFragment"
+        tools:layout="@layout/fragment_geo_alert_list">
+
+        <action
+            android:id="@+id/action_new_geo_alert"
+            app:destination="@+id/geo_alert_new" />
+
+        <action
+            android:id="@+id/action_product_list"
+            app:destination="@+id/product_list" />
+
+    </fragment>
+
+    <dialog
+        android:id="@+id/geo_alert_new"
+        android:name="com.dorukkangal.geoalert.ui.edit.NewGeoAlertFragment"
+        tools:layout="@layout/fragment_geo_alert_new">
+
+        <argument
+            android:name="geoAlert"
+            android:defaultValue="@null"
+            app:argType="com.dorukkangal.geoalert.domain.repository.geoalert.model.GeoAlert"
+            app:nullable="true" />
+
+    </dialog>
+
+    <fragment
+        android:id="@+id/product_list"
+        android:name="com.dorukkangal.geoalert.ui.products.ProductListFragment"
+        tools:layout="@layout/fragment_product_list" />
+
+</navigation>

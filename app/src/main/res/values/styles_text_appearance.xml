@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+
+    <style name="TextAppearance" parent="TextAppearance.AppCompat" />
+
+    <!--Light Styles-->
+
+    <style name="TextAppearance.Light">
+        <item name="android:fontFamily">@font/muli_light</item>
+    </style>
+
+    <style name="TextAppearance.Light.Black">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.Light.Black.10">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Light.Black.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Light.Black.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Light.Black.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Light.Black.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Light.Black.20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.Light.Black.24">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <!--Regular Styles-->
+
+    <style name="TextAppearance.Regular">
+        <item name="android:fontFamily">@font/muli_regular</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Black">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Black.10">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Black.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Black.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Black.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Black.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Black.20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!--Medium Styles-->
+
+    <style name="TextAppearance.Medium">
+        <item name="android:fontFamily">@font/muli_semibold</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Black">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Black.10">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Black.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Black.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Black.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Black.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Black.20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!--Bold Styles-->
+
+    <style name="TextAppearance.Bold">
+        <item name="android:fontFamily">@font/muli_bold</item>
+    </style>
+
+    <style name="TextAppearance.Bold.Black">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.Bold.Black.10">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextAppearance.Bold.Black.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Bold.Black.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Bold.Black.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Bold.Black.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Bold.Black.20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+</resources>

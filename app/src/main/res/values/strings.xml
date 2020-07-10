@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Geo Alert</string>
+
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+
+    <string name="notification_message">Notification Message</string>
+    <string name="current_location">Current Location</string>
+    <string name="add_new_geo_alert">Add New Geo Alert</string>
+</resources>

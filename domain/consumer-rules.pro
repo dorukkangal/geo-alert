@@ -1,0 +1,2 @@
+-keepnames class com.dorukkangal.geoalert.domain.repository.geoalert.model.GeoAlert
+-keepnames class com.dorukkangal.geoalert.domain.repository.product.model.Product

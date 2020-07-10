@@ -1,0 +1,61 @@
+# Android Studio
+.idea/
+*.iml
+
+# Eclipse
+.classpath
+.project
+
+# Mac File Store
+.DS_Store
+
+# Generated Files
+build/
+config/
+bin/
+gen/
+
+# Built Application Files
+*.apk
+*.ap_
+
+# Java Class Files
+*.class
+
+# Dex VM Files
+*.dex
+
+# Gradle
+.gradle/
+
+# Lint
+*/lint.xml
+
+# Checkstyle
+app/config
+config/
+
+# Local Configuration
+local.properties
+
+# Log Files
+.log
+
+# Android Studio Captures Folder
+captures/
+
+# Properties Files
+app.properties
+
+# Signing Config
+signing/prod.jks
+signing/release.signing.properties
+
+# Theme colors
+app/src/main/res/values/colors_*.xml
+
+# Fastlane Files
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output

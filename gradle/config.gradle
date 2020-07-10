@@ -1,0 +1,203 @@
+def repository = [
+        jitpack: 'https://jitpack.io',
+]
+
+ext.addRepos = { RepositoryHandler handler ->
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    handler.maven { url repository.jitpack }
+}
+
+
+ext.app = [
+        minSdk     : 21,
+        targetSdk  : 29,
+        compileSdk : 29,
+        buildTools : '29.0.2',
+        versionCode: 1,
+        versionName: '1.0.0',
+]
+
+def versions = [
+        gradlePlugin      : '4.0.0',
+
+        kotlin            : '1.3.72',
+        ktx               : '1.2.0',
+
+        appCompat         : '1.2.0-beta01',
+        material          : '1.2.0-alpha05',
+        constraintLayout  : '2.0.0-beta4',
+        swiperefreshlayout: '28.0.0',
+        preference        : '1.1.1',
+        lifecycle         : '1.1.1',
+
+        navigation        : '2.3.0-beta01',
+
+        dagger            : '2.28.1-alpha',
+        daggerx           : '1.0.0-alpha01',
+
+        rxKotlin          : '2.4.0',
+        rxAndroid         : '2.1.1',
+
+        room              : '2.2.5',
+
+        gson              : '2.8.6',
+
+        location          : '2.3.0',
+]
+
+def dependencies = [
+        gradle    : classpath("com.android.tools.build:gradle:$versions.gradlePlugin"),
+
+        kotlin    : [
+                plugin: classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"),
+                stdLib: implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"),
+                ktx   : implementation("androidx.core:core-ktx:$versions.ktx"),
+        ],
+
+        android   : [
+                appCompat         : implementation("androidx.appcompat:appcompat:$versions.appCompat"),
+                material          : implementation("com.google.android.material:material:$versions.material"),
+                constraintLayout  : implementation("androidx.constraintlayout:constraintlayout:$versions.constraintLayout"),
+                swiperefreshlayout: implementation("com.android.support:swiperefreshlayout:$versions.swiperefreshlayout"),
+                preference        : implementation("androidx.preference:preference:$versions.preference"),
+                preferenceKtx     : implementation("androidx.preference:preference-ktx:$versions.preference"),
+        ],
+
+        arch      : [
+                lifecycle: [
+                        extensions: implementation("android.arch.lifecycle:extensions:$versions.lifecycle"),
+                        compiler  : kapt("android.arch.lifecycle:compiler:$versions.lifecycle"),
+                ],
+        ],
+
+        navigation: [
+                safeArgs: classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"),
+                fragment: implementation("androidx.navigation:navigation-fragment-ktx:$versions.navigation"),
+                ui      : implementation("androidx.navigation:navigation-ui-ktx:$versions.navigation"),
+        ],
+
+        dagger    : [
+                plugin   : classpath("com.google.dagger:hilt-android-gradle-plugin:$versions.dagger"),
+                hilt     : implementation("com.google.dagger:hilt-android:$versions.dagger"),
+                compiler : kapt("com.google.dagger:hilt-android-compiler:$versions.dagger"),
+                common   : implementation("androidx.hilt:hilt-common:$versions.daggerx"),
+                viewmodel: implementation("androidx.hilt:hilt-lifecycle-viewmodel:$versions.daggerx"),
+                compilerx: kapt("androidx.hilt:hilt-compiler:$versions.daggerx"),
+        ],
+
+        rx        : [
+                kotlin : implementation("io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin"),
+                android: implementation("io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"),
+        ],
+
+        room      : [
+                runtime : api("androidx.room:room-runtime:$versions.room"),
+                rxJava  : api("androidx.room:room-rxjava2:$versions.room"),
+                compiler: kapt("androidx.room:room-compiler:$versions.room"),
+        ],
+
+        gson      : implementation("com.google.code.gson:gson:$versions.gson"),
+
+        location  : implementation("com.yayandroid:LocationManager:$versions.location")
+]
+
+ext.rootDependencies = [
+        dependencies.gradle,
+        dependencies.kotlin.plugin,
+        dependencies.dagger.plugin,
+        dependencies.navigation.safeArgs,
+]
+
+ext.appDependencies = [
+        dependencies.kotlin.stdLib,
+        dependencies.kotlin.ktx,
+        dependencies.android,
+        dependencies.arch,
+        dependencies.navigation.fragment,
+        dependencies.navigation.ui,
+        dependencies.dagger.hilt,
+        dependencies.dagger.compiler,
+        dependencies.dagger.common,
+        dependencies.dagger.viewmodel,
+        dependencies.dagger.compilerx,
+        dependencies.rx,
+        dependencies.location,
+]
+
+ext.domainDependencies = [
+        dependencies.kotlin.stdLib,
+        dependencies.kotlin.ktx,
+        dependencies.dagger.hilt,
+        dependencies.dagger.compiler,
+        dependencies.rx,
+]
+
+ext.dataDependencies = [
+        dependencies.kotlin.stdLib,
+        dependencies.kotlin.ktx,
+        dependencies.dagger.hilt,
+        dependencies.dagger.compiler,
+        dependencies.rx,
+        dependencies.room,
+]
+
+ext.utilDependencies = [
+        dependencies.kotlin.stdLib,
+        dependencies.kotlin.ktx,
+        dependencies.android.preference,
+        dependencies.dagger.hilt,
+        dependencies.dagger.compiler,
+        dependencies.gson,
+]
+
+ext.addDependencies = { DependencyHandler handler, dependencyArray ->
+    getDependencies(dependencyArray).each {
+        handler.add(it.config, it.notation)
+    }
+}
+
+static def getDependencies(holder) {
+    def dependencies = new ArrayList<Dependency>()
+
+    if (holder instanceof Dependency) {
+        dependencies.add(holder)
+    } else if (holder instanceof Map) {
+        holder.values().each {
+            dependencies.addAll(getDependencies(it))
+        }
+    } else if (holder instanceof List) {
+        holder.each {
+            dependencies.addAll(getDependencies(it))
+        }
+    }
+
+    return dependencies
+}
+
+static def classpath(notation) {
+    new Dependency('classpath', notation)
+}
+
+static def implementation(notation) {
+    new Dependency('implementation', notation)
+}
+
+static def api(notation) {
+    new Dependency('api', notation)
+}
+
+static def kapt(notation) {
+    new Dependency('kapt', notation)
+}
+
+class Dependency {
+    def config
+    def notation
+
+    Dependency(config, notation) {
+        this.config = config
+        this.notation = notation
+    }
+}
